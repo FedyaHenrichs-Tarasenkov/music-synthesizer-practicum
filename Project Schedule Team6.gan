@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?><project name="Practicum Project: ECE 411 Group 6" company="" webLink="http://" view-date="2025-09-21" view-index="0" gantt-divider-location="776" resource-divider-location="300" version="3.3.3316" locale="en_US">
+    <description/>
+    <view zooming-state="default:6" id="gantt-chart">
+        <field id="tpd3" name="Name" width="433" order="0"/>
+        <field id="tpd4" name="Begin date" width="162" order="1"/>
+        <field id="tpd5" name="End date" width="165" order="2"/>
+        <field id="tpd15" name="Notes" width="20" order="3"/>
+        <option id="filter.completedTasks" value="true"/>
+        <option id="filter.dueTodayTasks" value="false"/>
+        <option id="filter.overdueTasks" value="false"/>
+        <option id="filter.inProgressTodayTasks" value="false"/>
+    </view>
+    <view id="resource-table">
+        <field id="0" name="Name" width="210" order="0"/>
+        <field id="1" name="Default role" width="86" order="1"/>
+    </view>
+    <!-- -->
+    <calendars>
+        <day-types>
+            <day-type id="0"/>
+            <day-type id="1"/>
+            <default-week id="1" name="default" sun="1" mon="0" tue="0" wed="0" thu="0" fri="0" sat="1"/>
+            <only-show-weekends value="false"/>
+            <overriden-day-types/>
+            <days/>
+        </day-types>
+    </calendars>
+    <tasks empty-milestones="true">
+        <taskproperties>
+            <taskproperty id="tpd0" name="type" type="default" valuetype="icon"/>
+            <taskproperty id="tpd1" name="priority" type="default" valuetype="icon"/>
+            <taskproperty id="tpd2" name="info" type="default" valuetype="icon"/>
+            <taskproperty id="tpd3" name="name" type="default" valuetype="text"/>
+            <taskproperty id="tpd4" name="begindate" type="default" valuetype="date"/>
+            <taskproperty id="tpd5" name="enddate" type="default" valuetype="date"/>
+            <taskproperty id="tpd6" name="duration" type="default" valuetype="int"/>
+            <taskproperty id="tpd7" name="completion" type="default" valuetype="int"/>
+            <taskproperty id="tpd8" name="coordinator" type="default" valuetype="text"/>
+            <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
+        </taskproperties>
+        <task id="19" uid="f6aab6ea5ec04b42b34115f8a4b1a826" name="Concept Phase" meeting="false" start="2025-10-03" duration="15" complete="0" expand="true">
+            <task id="1" uid="5cecb5b5b54c46dd848258e9d2dc88db" name="Form Practicum Teams!" meeting="false" start="2025-10-03" duration="5" complete="0" expand="true"/>
+            <task id="0" uid="12bdc4b422934ac9975e80b04a26fccc" name="Class Skills Survery" meeting="false" start="2025-10-03" duration="5" complete="0" expand="true"/>
+            <task id="2" uid="ac1615d37de9428f91ae33a3093916d0" name="Set Up a Collaboration Site" meeting="false" start="2025-10-10" duration="5" complete="0" expand="true"/>
+            <task id="3" uid="a18b60dd173f4689af8ad4f9e556597a" name="Generate 3 Project and Chose one" meeting="false" start="2025-10-10" duration="5" complete="0" expand="true">
+                <depend id="4" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="4" uid="6d2438a55cf54a828e3bcf0a1d40c8be" name="Product Design Specification" meeting="false" start="2025-10-17" duration="5" complete="0" expand="true"/>
+        </task>
+        <task id="20" uid="1f70b12627d8444590125cc51b164fb4" name="Prototyping Phase" meeting="false" start="2025-10-24" duration="15" complete="0" expand="true">
+            <task id="5" uid="19b4b4b1e8db43c4a9b886f6979fd388" name="Prelimirary Schematic" meeting="false" start="2025-10-24" duration="5" complete="0" expand="true">
+                <depend id="8" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="9" uid="a65ad01198da48bfa93d2ad6f6d5b9da" name="Breadboard Prototype" meeting="false" start="2025-10-31" duration="5" complete="0" expand="true"/>
+            <task id="8" uid="52c392deb850417984eca8e4008471fc" name="Updated Schematic and Preliminary Layout" meeting="false" start="2025-10-31" duration="5" complete="0" expand="true">
+                <depend id="13" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="10" uid="c3ac31437a6242a98e55105e345a3200" name="Rough Draft of CAD" meeting="false" start="2025-11-07" duration="5" complete="0" expand="true">
+                <depend id="14" type="2" difference="0" hardness="Strong"/>
+            </task>
+        </task>
+        <task id="21" uid="ee4e058308a04d8b95c7923187680f0d" name="Design Phase" meeting="false" start="2025-11-07" duration="5" complete="0" expand="true">
+            <task id="12" uid="d1407d9f2cdb4dcda244d4bbefb0dd0c" name="Functional Decompostion" meeting="false" start="2025-11-07" duration="5" complete="0" expand="true"/>
+            <task id="11" uid="290a98a211564c98ab6abf21dbb0e76a" name="Bill of Materials" meeting="false" start="2025-11-07" duration="5" complete="0" expand="true"/>
+            <task id="13" uid="98558768684242678d03d4f893f4c698" name="Design Review" meeting="false" start="2025-11-07" duration="5" complete="0" expand="true"/>
+        </task>
+        <task id="22" uid="522d5258e6b44818a508d4b859882783" name="Pre-Production Phase" meeting="false" start="2025-11-14" duration="15" complete="0" expand="true">
+            <task id="14" uid="219aef68bdd94f4582338810be5b78fe" name="Final CAD Design" meeting="false" start="2025-11-14" duration="5" complete="0" expand="true">
+                <depend id="16" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="15" uid="d3b0d9caa85140d182a64ea62230b6ca" name="Test / Testing Plan" meeting="false" start="2025-11-28" duration="5" complete="0" expand="true">
+                <depend id="16" type="2" difference="0" hardness="Strong"/>
+            </task>
+        </task>
+        <task id="24" uid="e7dfbb1ff26e4a9b8f168159dc3364d9" name="Production Phase" meeting="false" start="2025-12-05" duration="6" complete="0" expand="true">
+            <task id="16" uid="6a5e920d42454bb49d3131ba7890b9b6" name="Practicum Demos" meeting="false" start="2025-12-05" duration="6" complete="0" expand="true"/>
+        </task>
+    </tasks>
+    <resources>
+        <resource id="0" name="Rafael Cervantes" function="Default:0" contacts="cervan7@pdx.edu" phone=""/>
+        <resource id="1" name="Fedya Henrichs-Tarasenkov" function="Default:0" contacts="fedya@pdx.edu" phone=""/>
+        <resource id="2" name="Antonio Hernandez Olivares" function="Default:0" contacts="anton32@pdx.edu" phone=""/>
+        <resource id="3" name="Cesar Chich Saquic" function="Default:0" contacts="ces26@pdx.edu" phone=""/>
+    </resources>
+    <allocations>
+        <allocation task-id="8" resource-id="0" function="Default:0" responsible="false" load="100.0"/>
+        <allocation task-id="4" resource-id="0" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="3" resource-id="0" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="0" resource-id="0" function="Default:0" responsible="false" load="100.0"/>
+        <allocation task-id="1" resource-id="0" function="Default:0" responsible="false" load="100.0"/>
+        <allocation task-id="9" resource-id="1" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="4" resource-id="1" function="Default:0" responsible="false" load="100.0"/>
+        <allocation task-id="3" resource-id="1" function="Default:0" responsible="false" load="100.0"/>
+        <allocation task-id="2" resource-id="1" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="0" resource-id="1" function="Default:0" responsible="false" load="100.0"/>
+        <allocation task-id="1" resource-id="1" function="Default:0" responsible="false" load="100.0"/>
+        <allocation task-id="8" resource-id="2" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="5" resource-id="2" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="4" resource-id="2" function="Default:0" responsible="false" load="100.0"/>
+        <allocation task-id="3" resource-id="2" function="Default:0" responsible="false" load="100.0"/>
+        <allocation task-id="0" resource-id="2" function="Default:0" responsible="false" load="100.0"/>
+        <allocation task-id="1" resource-id="2" function="Default:0" responsible="false" load="100.0"/>
+        <allocation task-id="4" resource-id="3" function="Default:0" responsible="false" load="100.0"/>
+        <allocation task-id="3" resource-id="3" function="Default:0" responsible="false" load="100.0"/>
+        <allocation task-id="0" resource-id="3" function="Default:0" responsible="false" load="100.0"/>
+        <allocation task-id="1" resource-id="3" function="Default:0" responsible="false" load="100.0"/>
+    </allocations>
+    <vacations/>
+    <previous/>
+    <roles roleset-name="Default"/>
+</project>
