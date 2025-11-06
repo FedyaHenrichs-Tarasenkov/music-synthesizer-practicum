@@ -1,0 +1,142 @@
+#include <Audio.h>
+#include <Wire.h>
+#include <SPI.h>
+#include <SD.h>
+#include <SerialFlash.h>
+
+const int myInput = AUDIO_INPUT_LINEIN;
+
+// Audio components
+AudioInputI2S       audioInput;
+AudioFilterBiquad   bassBoost;
+AudioEffectReverb   reverb;
+AudioOutputI2S      audioOutput;
+
+AudioControlSGTL5000 audioShield;
+
+// Connection pointers - initialize to nullptr
+AudioConnection* patch1 = nullptr;
+AudioConnection* patch2 = nullptr;
+AudioConnection* patch3 = nullptr;
+AudioConnection* patch4 = nullptr;
+
+// Effect states
+enum EffectMode {
+  NO_EFFECT,
+  BASS_BOOST,
+  REVERB,
+  BOTH_EFFECTS
+};
+
+EffectMode currentEffect = BASS_BOOST;
+
+void deleteAllConnections() {
+  // Delete all existing connections
+  if (patch1) { delete patch1; patch1 = nullptr; }
+  if (patch2) { delete patch2; patch2 = nullptr; }
+  if (patch3) { delete patch3; patch3 = nullptr; }
+  if (patch4) { delete patch4; patch4 = nullptr; }
+}
+
+void setupAudioConnections() {
+  // Always delete old connections first
+  deleteAllConnections();
+  
+  switch(currentEffect) {
+    case NO_EFFECT:
+      // Direct pass-through - both channels
+      patch1 = new AudioConnection(audioInput, 0, audioOutput, 0);
+      patch2 = new AudioConnection(audioInput, 1, audioOutput, 1);
+      Serial.println("Direct pass-through mode");
+      break;
+      
+    case BASS_BOOST:
+      // Bass boost only - both channels
+      patch1 = new AudioConnection(audioInput, 0, bassBoost, 0);
+      patch2 = new AudioConnection(bassBoost, 0, audioOutput, 0);
+      patch3 = new AudioConnection(bassBoost, 0, audioOutput, 1);
+      Serial.println("Bass boost mode");
+      break;
+      
+    case REVERB:
+      // Reverb only - both channels
+      patch1 = new AudioConnection(audioInput, 0, reverb, 0);
+      patch2 = new AudioConnection(reverb, 0, audioOutput, 0);
+      patch3 = new AudioConnection(reverb, 0, audioOutput, 1);
+      Serial.println("Reverb mode");
+      break;
+      
+    case BOTH_EFFECTS:
+      // Both effects in series
+      patch1 = new AudioConnection(audioInput, 0, bassBoost, 0);
+      patch2 = new AudioConnection(bassBoost, 0, reverb, 0);
+      patch3 = new AudioConnection(reverb, 0, audioOutput, 0);
+      patch4 = new AudioConnection(reverb, 0, audioOutput, 1);
+      Serial.println("Bass + Reverb mode");
+      break;
+  }
+}
+
+void setup() {
+  Serial.begin(9600);
+  while (!Serial); // Wait for serial connection
+  
+  AudioMemory(12);
+  
+  audioShield.enable();
+  audioShield.inputSelect(myInput);
+  audioShield.lineInLevel(5);
+  audioShield.volume(0.8);
+  
+  // Configure bass boost
+  bassBoost.setLowShelf(0, 80.0, 0.8, 24.0);
+  
+  // Configure reverb
+  reverb.reverbTime(0.2);
+  
+  
+  // Set up initial connections
+  setupAudioConnections();
+  
+  Serial.println("Audio Effects Ready!");
+  Serial.println("Commands: 1=Bass, 2=Reverb, 3=Both, 4=None");
+}
+
+void handleSerialCommands() {
+  if (Serial.available()) {
+    char command = Serial.read();
+    EffectMode newEffect = currentEffect;
+    
+    switch(command) {
+      case '1':
+        newEffect = BASS_BOOST;
+        break;
+      case '2':
+        newEffect = REVERB;
+        break;
+      case '3':
+        newEffect = BOTH_EFFECTS;
+        break;
+      case '4':
+        newEffect = NO_EFFECT;
+        break;
+      case '?':
+        Serial.println("Commands: 1=Bass, 2=Reverb, 3=Both, 4=None");
+        return;
+      default:
+        Serial.println("Unknown command. Press ? for help.");
+        return;
+    }
+    
+    // Only update if effect changed
+    if (newEffect != currentEffect) {
+      currentEffect = newEffect;
+      setupAudioConnections();
+    }
+  }
+}
+
+void loop() {
+  handleSerialCommands();
+  delay(10);
+}
